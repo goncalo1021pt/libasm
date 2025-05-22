@@ -1,0 +1,11 @@
+Argument	Register	
+1st           rdi	
+2nd           rsi
+3rd           rdx	     
+4th			  rcx
+5th	          r8
+6th	          r9
+
+Other arguments are passed on the stack.
+
+return value = rax
