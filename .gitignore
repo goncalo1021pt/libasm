@@ -1,0 +1,40 @@
+# Build artifacts
+./objs
+objs/
+*.o
+*.a
+libasm.a
+libasm
+
+# Executables and binaries
+*.out
+*.exe
+a.out
+
+# Debug and profiling files
+*.dSYM/
+vgcore.*
+core.*
+*.gdb_history
+
+# Assembly specific
+*.lst
+*.map
+
+# Development environment
+.vscode/
+.DS_Store
+*.swp
+*.swo
+*~
+.*.tmp
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Archives and compressed files
+*.tar.gz
+*.zip
+*.7z
