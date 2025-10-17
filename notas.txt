@@ -1,11 +1,19 @@
 Argument	Register	
 1st           rdi	
 2nd           rsi
-3rd           rdx	     
+3rd           rdx    
 4th			  rcx
 5th	          r8
 6th	          r9
 
 Other arguments are passed on the stack.
 
+rdi = pointer to the string
+
 return value = rax
+
+https://www.kufunda.net/publicdocs/assembly64.pdf
+PAGE 10 general-purpose registers
+
+https://medium.com/@leogaudin/libasm-a-guide-to-get-familiar-with-assembly-in-42-830f619f4c5e
+to understand how to set errno in assembly __errno_location is used to get the address of errno variable. Then we can store the error code in that address.

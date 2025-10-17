@@ -9,7 +9,7 @@ HEADERS = -I includes/
 HDRS = $(wildcard includes/*.h)
 
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g -o3
+CFLAGS = -Wall -Wextra -Werror -g -o3 -no-pie
 SFLAGS = -fsanitize=address
 VFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes #--suppressions="supression.supp"
 CC = cc
@@ -48,16 +48,20 @@ fclean: clean
 	@$(RM) $(LIB_NAME)
 	@$(RM) $(BONUS_NAME)
 	@echo "$(RED)$(NAME)$(NC) cleaned!"
+	@$(RM) 
 
-v: re
+v: compile
 	valgrind $(VFLAGS) ./$(NAME)
 
 send: fclean
 	git add . && git commit -m "auto" && git push
 
+compile: all
+	@$(CC) $(CFLAGS) main.c $(LIB_NAME) -o $(NAME) $(HEADERS)
+
 run: all
 	@$(CC) $(CFLAGS) main.c $(LIB_NAME) -o $(NAME) $(HEADERS)
-	./$(NAME)
+	@./$(NAME)
 
 re: fclean all
 

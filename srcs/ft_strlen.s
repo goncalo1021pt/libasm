@@ -2,17 +2,18 @@ section .text
     global ft_strlen
 
 ft_strlen:
-    ; rdi = pointer to the string
-    mov rax, 0          ; length counter = 0
+    mov rax, 0                ; length counter = 0 also rax will hold the return value
 
 .loop:
-    mov al, byte [rdi]  ; load byte at address in rdi into al
-    cmp al, 0           ; check if null terminator sets ZF if al == 0 zf == cpu flag
-    je .done            ; if zero, we're done checks ZF and executes if zf == TRUE 
+    mov dl, byte [rdi + rax]  ; load byte at rdi[rax] dl is the lowest byte of rdx
+    cmp dl, 0                 ; check if null terminator
+    je .done                  ; if prossor flag 0, we're done
 
-    inc rdi             ; move to next char
-    inc rax             ; increment length
-    jmp .loop           ; repeat
+    inc rax                   ; increment length counter
+    jmp .loop                 ; repeat
 
 .done:
-    ret
+    ret                       ; rax contains the length
+
+; This section tells the linker the stack doesn't need to be executable
+section .note.GNU-stack noalloc noexec nowrite progbits
