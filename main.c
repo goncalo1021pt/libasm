@@ -14,7 +14,8 @@ void ft_putnbr(int nb)
 	}
 	if (nb >= 10)
 		ft_putnbr(nb / 10);
-	ft_write(1, "0123456789" + (nb % 10), 1);
+	char c = '0' + (nb % 10);
+	ft_write(1, &c, 1);
 }
 
 int main(void)
